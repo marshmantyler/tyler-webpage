@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- SVG Filter to crush High-Def images to 2000s Web-Safe colors -->
+
     <svg width="0" height="0" style="position: absolute; z-index: -100;">
         <filter id="web-safe-colors">
             <feComponentTransfer>
@@ -18,7 +18,7 @@
         </filter>
     </svg>
 
-    <!-- Floating Audio Player -->
+
     <div id="audio-controls">
         <div class="audio-buttons-wrapper">
             <div id="mute-button" class="audio-button" title="Mute/Unmute">
@@ -38,7 +38,7 @@
         <div id="audio-status">Loading...</div>
     </div>
 
-    <!-- Main Web Container -->
+
     <div class="container">
         <div class="title-bar">
             Personal Homepage - Tyler Marshman
@@ -65,7 +65,7 @@
         </nav>
 
         <div class="main-content">
-            <!-- Left Panel -->
+
             <div class="content-panel">
                 
                 <div id="home-content" class="content-section active">
@@ -400,7 +400,7 @@
 
             </div>
 
-            <!-- Right Sidebar -->
+
             <div class="sidebar">
                 <div class="sidebar-section">
                     <button class="back-button">◄ Back</button>
@@ -673,25 +673,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const lastFmContainer = document.getElementById('lastfm-tracks');
 
-    // Fetch the data from Last.fm
+
     fetch(url)
         .then(response => {
             if (!response.ok) throw new Error('Network response was not ok');
             return response.json();
         })
         .then(data => {
-            // Check if there are tracks
+
             if (data.recenttracks && data.recenttracks.track.length > 0) {
                 const track = data.recenttracks.track[0];
                 const trackName = track.name;
                 const artistName = track.artist['#text'];
                 const trackUrl = track.url;
                 
-                // Check if the user is currently listening or if it's a past scrobble
+
                 const isNowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
                 const statusText = isNowPlaying ? '<span class="blink">Now Playing:</span>' : 'Last Played:';
 
-                // Format the output
+
                 lastFmContainer.innerHTML = `
                     <li>
                         ${statusText}<br>

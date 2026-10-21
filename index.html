@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TM's Homepage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- SVG Filter to crush High-Def images to 2000s Web-Safe colors -->
+    <svg width="0" height="0" style="position: absolute; z-index: -100;">
+        <filter id="web-safe-colors">
+            <feComponentTransfer>
+                <feFuncR type="discrete" tableValues="0 0.2 0.4 0.6 0.8 1" />
+                <feFuncG type="discrete" tableValues="0 0.2 0.4 0.6 0.8 1" />
+                <feFuncB type="discrete" tableValues="0 0.2 0.4 0.6 0.8 1" />
+            </feComponentTransfer>
+        </filter>
+    </svg>
+
+    <!-- Floating Audio Player -->
+    <div id="audio-controls">
+        <div class="audio-buttons-wrapper">
+            <div id="mute-button" class="audio-button" title="Mute/Unmute">
+                <svg id="speaker-on" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                </svg>
+                <svg id="speaker-off" class="hidden" viewBox="0 0 24 24">
+                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L7 9H3v6h4l5 5v-6.73l-5-5z"/>
+                </svg>
+            </div>
+            <button id="next-song-button" class="audio-button" title="Next Song">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                </svg>
+            </button>
+        </div>
+        <div id="audio-status">Loading...</div>
+    </div>
+
+    <!-- Main Web Container -->
+    <div class="container">
+        <div class="title-bar">
+            Personal Homepage - Tyler Marshman
+        </div>
+
+        <div class="header">
+            <h1>WELCOME TO MY HOMEPAGE</h1>
+            <p>Est. 2006 | Last Updated: <span class="blink">NEW!</span> October 20, 2026</p>
+        </div>
+
+        <nav class="nav-grid">
+            <a href="#" class="nav-button active-nav" data-section="home">
+                 HOME
+            </a>
+            <a href="#" class="nav-button" data-section="about-me">
+                 ABOUT ME
+            </a>
+            <a href="#" class="nav-button" data-section="blog">
+                 BLOGPOST
+            </a>
+            <a href="#" class="nav-button" data-section="links">
+                 LINKS
+            </a>
+        </nav>
+
+        <div class="main-content">
+            <!-- Left Panel -->
+            <div class="content-panel">
+                
+                <div id="home-content" class="content-section active">
+                    <div class="section-title">About This Site</div>
+                    <p><strong>Hello, I'm Tyler Marshman!</strong></p>
+					<div class="intro-gif">
+                        <img src="https://media1.tenor.com/m/DtBNz_vYO3sAAAAd/you%27re-finally-online-wither-gundam-eye-glow.gif" alt="You're finally online GIF">
+                    </div>
+					
+                    <p>This site is for sharing my thoughts through my blogposts and also acts as a sandbox for me to mess with.</p>
+                    <hr class="retro-hr">
+                    <h3>What's New?</h3>
+                    <ul class="retro-list">
+                        <li>Added references & links | 21:10:26</li>
+                        <li>Added webrings | 21:10:26</li>
+                        <li>Fixed some bugs | 20:10:26</li>
+                        <li>Added new blogpost under Anime/Manga | 20:10:26</li>
+                    </ul>
+                    <hr class="retro-hr">
+                    <h3>Resources & Credits</h3>
+						<ul class="retro-list">
+							<li>Audio Hosting: <a href="https://filegarden.com" target="_blank">FileGarden</a> &amp; <a href="https://catbox.moe" target="_blank">Catbox.moe</a></li>
+							<li>BGM source: <a href="https://www.audiolibrary.com.co/" target="_blank">Youtube Audio Library</a></li>							
+							<li>Background Wallpaper: Gundam Endless Waltz via <a href="https://postimages.org/" target="_blank">PostImage</a></li>
+							<li>GIFs &amp; Animations: <a href="https://tenor.com" target="_blank">Tenor</a> (Gundam &amp; Zaku GIFs)</li>
+							<li>Dynamic Data: <a href="https://www.last.fm" target="_blank">Last.fm API</a> for live music status</li>
+							<li>Image Hosts &amp; CDN: Wikimedia Commons, Google Blogger, ImgLink</li>
+						</ul>
+                    <hr class="retro-hr">
+                    
+                    <div class="guestbook-toggle">Open Guestbook ✉</div>
+                    <div class="guestbook-content">
+                        <div class="section-title" style="margin: -10px -10px 10px -10px;">Sign My Guestbook!</div>
+                        <form action="mailto:ngocanhhocfpt@gmail.com" method="post" enctype="text/plain" class="guestbook-form">
+                            <div><label for="name">Name:</label><input type="text" id="name" name="name"></div>
+                            <div><label for="email">Email:</label><input type="email" id="email" name="email"></div>
+                            <div><label for="message">Message:</label><textarea id="message" name="message" rows="4"></textarea></div>
+                            <div class="form-footer">
+                                <input type="submit" value="Submit">
+                                <span style="font-size: 10px; margin-left: 10px;">Note: Submitting will open your email client.</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div id="about-me-content" class="content-section">
+                     <div class="section-title">About Me</div>
+                     <p><strong>Hi, I'm Tyler Marshman. Good to see you around!</strong></p>
+                     <hr class="retro-hr">
+                     <h3>About me</h3>
+                     <table class="retro-table">
+                         <tr><th>Name:</th><td>Goes by alias Tyler Marshman, TylerM, TMarshman, TM, Katori</td></tr>
+                         <tr><th>Age:</th><td>Currently 19</td></tr>
+                         <tr><th>Languages:</th><td>Vietnamese, English, Japanese</td></tr>
+                         <tr><th>Interests:</th><td>Manga/Anime, Games, Tech, Vtubers, Model kits, Martial Arts, and just about anything that piqued my interest</td></tr>
+						 <tr><th>Games I enjoy:</th><td>Current obsession: Deadlock. Generally I play because of the game, not the genre. Some of the games I've played: Monster Hunter: Rise (main glaive & bow), L4d2, Payday 2, TBOI, LOL, Phasmophobia, Apex Legends, Stardew Valley, Mahjong Soul, Gacha games (Mainly Arknights), Rhythm games (Musedash, Cytus II, maimaiDX etc.) </td></tr>           
+						 <tr><th>Anime/Manga preferences:</th><td>I am quite fond of CGDCT and Yuri media, you could never make me hate them. More information available on my Anilist</td></tr>						 
+						 <tr><th>Usually listen to:</th><td>Hiphop, Alternative Rock, Vocaloid (they are still vocaloids in my brain), VGM, Pop, Metal, some nostalgic EDMs</td></tr>
+                         <tr><th>Academic level:</th><td>Currently attending a university in Vietnam, Computer Science major in Cyber Security</td></tr>
+						 <tr><th>Cherished qualities:</th><td>Kindness, Curiosity, and Gratitude</td></tr>
+                     </table>
+                     <hr class="retro-hr">
+                     <h3>Random Facts</h3>
+                     <ul class="retro-list">
+                         <li>I'm "woke", I support human rights and believe we all can do better to make this world more livable.</li>
+                     </ul>
+                     <hr class="retro-hr">
+                     <h3>Where you can find me / Contact</h3>
+                     <table class="retro-table">
+                         <tr><th>Email:</th><td><a href="mailto:tmarshman@proton.me">tmarshman@proton.me</a></td></tr>
+                         <tr><th>Discord:</th><td>tmarshman</td></tr>
+                         <tr><th>Anilist:</th><td><a href="https://anilist.co/user/TMarshman/">TMarshman</a></td></tr>
+						 <tr><th>GameBanana:</th><td><a href="https://gamebanana.com/members/5464411">TMarshman</a></td></tr>
+                     </table>
+                </div>
+
+                <div id="blog-content" class="content-section">
+                    <div class="breadcrumb" id="blog-breadcrumb">Blogpost</div>
+                    <div id="blog-view-categories" class="blog-view active">
+                        <ul class="retro-list category-list">
+                            <li><a href="#" class="blog-nav-link" data-view="blog-view-gundam-subcategories">Gundam</a></li>
+                            <li><a href="#" class="blog-nav-link" data-view="blog-view-animemanga-posts">Anime/Manga</a></li>
+                            <li><a href="#" class="category-toggle" data-category="tech">Tech</a></li>
+                            <li><a href="#" class="category-toggle" data-category="other">Other</a></li>
+                        </ul>
+                    </div>
+                    <div id="blog-view-gundam-subcategories" class="blog-view">
+                        <ul class="retro-list category-list">
+                           <li><a href="#" class="blog-nav-link" data-view="blog-view-gunpla-posts">Gunpla</a></li>
+                        </ul>
+                    </div>
+                    <div id="blog-view-gunpla-posts" class="blog-view">
+                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Gunpla_Logo.svg/1920px-Gunpla_Logo.svg.png" alt="Gunpla Logo" class="category-header-image">
+                         <ul class="retro-list post-list">
+                            <li>
+                                <a href="#" class="blog-nav-link" data-view="blog-view-gunpla-post-1">
+                                    <div class="post-link-title">Gunpla: Where Anime Meets Engineering</div>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="#" class="blog-nav-link" data-view="blog-view-gunpla-post-3">
+                                    <div class="post-link-title">Gunpla Maintenance 101</div>
+                                    <div class="post-link-subtitle">Everything You Need to Know to Clean, Repair, and Care for Your Models</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="blog-view-animemanga-posts" class="blog-view">
+                         <ul class="retro-list post-list">
+                            <li>
+                                <a href="#" class="blog-nav-link" data-view="blog-view-revue-post-1">
+                                    <div class="post-link-title">More Than a Show: A Love Letter to Revue Starlight</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="blog-nav-link" data-view="blog-view-universe-post-1">
+                                    <div class="post-link-title">Finding My Own Place Further Than The Universe</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="blog-nav-link" data-view="blog-view-shimeji-post-1">
+                                    <div class="post-link-title">Shimeji Simulation: Reality is a beautiful, crumbling dream, but the hand you hold at the end is real.</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="blog-view-gunpla-post-1" class="blog-view post-content">
+                        <h3 class="post-title">Gunpla: Where Anime Meets Engineering</h3>
+                        <div class="intro-gif">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Gunpla_Logo.svg/1920px-Gunpla_Logo.svg.png" alt="Gunpla Logo">
+                        </div>
+                        <p>Welcome to the world of Gunpla! Gunpla, short for "Gundam plastic model," refers to model kits depicting the mecha and characters from the Gundam multiverse, manufactured by Bandai Spirits. It's a fantastic hobby that doesn't require a huge initial investment, with model kits starting at less than US$20. Gunpla is all about building a model you love with your own hands, rather than striving for perfection.</p>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEge3heZp6dnZCPplD2xKKNGKEzZ7zzVYIW7p6S6JoPmKJ-bB2q1wIt9RqK9qKkw-VzZnN3exMM_dnv0Uke7spuFturHHAinm_hfQlRoE-b_YTUKUhsw5D09xgUyXKYfGf2F9X3Ti4uoDTUDZwOEbF0g6O9WFfL901I_KOfJcbKFvDDiTEU7G2rWsqvlPw/s16000-rw/mg%20ex-S%20S%20gundam%20alpha%20colors%20(5).jpg" alt="MG Ex-S Gundam" class="post-inline-image">
+                        <hr class="retro-hr" />
+                        <h6>A Brief History and Evolution</h6>
+                        <p>Early kits often required glue and had limited articulation and detail, with parts available in up to three cast-in colors. Significant innovations soon followed:</p>
+                        <ul>
+                            <li>System Injection was introduced, allowing a single part to be cast in multiple colors simultaneously, reducing the need for painting.</li>
+                            <li>In 1985, poly-caps (soft plastic connectors) were adopted for improved joint articulation.</li>
+                            <li>By 1987, snap-fit models that required little to no glue were introduced, becoming standard in 1988.</li>
+                        </ul>
+                        <p>The 1990s marked the introduction of a "grade" system to categorize kits by detail and quality. This led to the creation of iconic lines that continue today.</p>
+                        <h6>Understanding Grade and Scale</h6>
+                        <p>Bandai categorizes Gunpla models by grade and scale. The grade is the most important factor as it determines the model's difficulty and detail level, not the scale.</p>
+                        <ul>
+                            <li><strong>Scale:</strong> This refers to the model's size relative to the fictional machine. Common scales include 1/144, 1/100, 1/60, and 1/48.</li>
+                            <li><strong>Grades (in increasing order of complexity/detail):</strong>
+                                <ul>
+                                    <li>Super Deformed (SD)</li>
+                                    <li>Entry Grade (EG)</li>
+                                    <li>High Grade (HG)</li>
+                                    <li>Full Mechanics & RE/100</li>
+                                    <li>Real Grade (RG)</li>
+                                    <li>Master Grade (MG)</li>
+                                    <li>Perfect Grade (PG)</li>
+                                    <li>Mega Size Model</li>
+                                </ul>
+                            </li>
+                        </ul>
+						
+						<h6>Choosing Your Gunpla</h6>
+                        <p>When choosing a Gunpla model, the most important factor is choosing a design that you like the best. Your experience level with model kits will guide your optimal starting point:</p>
+                        <p><strong>For Beginners (No prior model kit experience)</strong></p>
+                        <p>If you haven't built a model kit before, you cannot go wrong with the simplicity of a High Grade (HG) or RE/100 grade kit.</p>
+                        <ul>
+                            <li>High Grade (HG): These kits are generally 5-6 inches tall (1/144 scale). They are considered excellent for beginners due to their ease of construction, inexpensive nature, and good potential to look fantastic.</li>
+                            <li>No Grade (NG) / First Grade (FG): Modern No Grade releases have significantly improved in quality. First Grade (FG) kits are snap-fit and feature simplicity with modern designs. The Entry Grade (EG) line also offers advanced color-separated parts without the need for stickers or tools.</li>
+                            <li>Super Deformed (SD): These models feature comically large heads. They are generally very easy to construct, quick to build, and inexpensive.</li>
+                        </ul>
+                        <p><strong>For Experienced Builders (Prior model kit experience)</strong></p>
+                        <p>If you have built model kits before, you can get whatever you want. Bandai's quality control, molds, and documentation are considered leading in the industry.</p>
+                        
+                        <h6>Where to Shop</h6>
+                        <p>You can buy Gunpla models wherever you can get a good deal.</p>
+                        <hr class="retro-hr" />
+                        <h6>References & Sources</h6>
+                        <ol class="references-list">
+                            <li>Wikipedia</li>
+                            <li>GundamKitsCollection</li>
+							<li>OtakuRevolution</li>
+							<li>GundamInfo</li>
+                        </ol>
+                    </div>
+    
+
+                    <div id="blog-view-gunpla-post-3" class="blog-view post-content">
+                        <h3 class="post-title">Gunpla Maintenance 101</h3>
+                        <h6>The Basic Assembly Process</h6>
+                        <p>Taking care of your Gunpla models involves both regular maintenance to keep them looking good and knowing how to handle unexpected damage. The hobby emphasizes that "Gunpla is freedom," meaning it's about building a model you love, not necessarily striving for perfection.</p>
+                        <p>Here's how to take care of your Gunpla:</p>
+                        <h6>Routine Cleaning</h6>
+                        <p>Gunpla models, like other items in your home, will collect dust and benefit from regular cleaning. However, they are fragile and cannot be simply washed in water due to potential damage to stickers, panel lines, paint, or glue.</p>
+                        <p>The recommended cleaning process involves two main steps:</p>
+                        <ul>
+                            <li>Step 1: Loosen Dust with a Dry Brush. Use a soft, dry brush, such as a makeup brush (which is considered softer than paint brushes), to gently loosen dust from all the nooks and crannies of your model.</li>
+                            <li>Step 2: Use Compressed Air. After loosening the dust, carefully spray the model with compressed air, similar to what you might use for cleaning computers or keyboards.</li>
+                        </ul>
+                        <p>For more stubborn, caked-on dust, you can follow up with a moistened Q-tip. The water from the Q-tip dries in the air and generally doesn't cause problems with paint on the models. Ideally, this cleaning process should be repeated every two weeks to keep your models in top condition.</p>
+                        <h6>Fixing Broken Gunpla</h6>
+                        <p>Despite careful handling, accidents can happen, and parts of your Gunpla might break. When this occurs, there are several approaches to repair them:</p>
+                        <ol class="references-list">
+                            <li>Assess the Damage: The first step is to determine the extent of the damage, as this will guide your repair strategy.</li>
+                            <li>Fix Small Breaks with Superglue: For minor breaks, standard superglue (like Krazy Glue) can be effective. Apply a small dab of superglue to the broken part and hold it in place for at least 30 seconds. After gluing, leave the model lying down to dry, which helps prevent further falls while the glue sets.
+                                <ul>
+                                    <li>Caution with Superglue: Be aware that superglue can cause "fogging," where evaporating glue attaches to the surrounding plastic.</li>
+                                </ul>
+                            </li>
+                            <li>Consider a Replacement Kit: If the damage is extensive, making it difficult to glue the original parts back together, one option is to purchase a duplicate kit to use for replacement parts. This provides a supply of pieces for future repairs if needed.</li>
+                            <li>Disguise as Battle Damage: If the model is expensive, or you simply prefer not to buy another kit, you can creatively disguise the damage as "battle damage". This involves using weathering kits to simulate wear like sand, mud, or gunpowder, and adding scrapes to other armor parts to make the damage appear intentional and realistic.</li>
+                            <li>Advanced Repairs for Joints/Pegs: For broken joints or pegs, simple superglue might result in a weak bond. More advanced hobbyists suggest techniques such as:
+                                <ul>
+                                    <li>Using plastic cement (which melts plastic together).</li>
+                                    <li>Drilling small holes with a pin vice into both sides of the broken part and inserting metal (e.g., copper) rods with glue to add internal support and strength. This helps the joint bear weight and maintain poseability.</li>
+                                    <li>For kits with a Bluefin sticker, you might be able to request replacement parts directly from them, though this can sometimes involve long waiting periods.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p>Ultimately, the hobby of Gunpla building offers freedom in how you engage with it, from simple assembly to extensive customization and repair</p>
+                    </div>
+
+                    <div id="blog-view-revue-post-1" class="blog-view post-content">
+                        <h3 class="post-title">More Than a Show: A Love Letter to Revue Starlight</h3>
+                        <p>(WARNING: Only the introduction and the final section of this blog post is spoiler-free,)</p>
+                        <p>This blog post shall not even wish to captivate the full extend of how much of a theatrical masterpiece Revue Starlight is, so if you can, please go experience Revue Starlight.</p>
+                        <p>For a long time, I searched for an anime that could truly capture the electrifying, all-consuming passion of the theater. I yearned for a story that understood the ambition, the camaraderie, the crushing lows, and the transcendent highs of the stage. Then, I found Revue Starlight, and the wait was more than worth it. This 12-episode anime and its breathtaking feature film are not just a celebration of theater; they are a profound exploration of what it means to strive, to connect, and to find your own spotlight in a world that constantly asks you to perform. It's a franchise that has become my absolute favorite, a rabbit hole of intricate storytelling and visual splendor that I believe is one of the deepest and most rewarding in all of anime.</p>
+                        <h6>The Curtain Rises: A Story of Ambition and Friendship</h6>
+                        <p>At its heart, Revue Starlight follows the students of Seisho Music Academy, an all-girls school dedicated to training the next generation of theatrical stars. The story centers on Karen Aijo, a cheerful and determined girl whose life takes a surreal turn when she discovers a hidden elevator that descends to a vast underground stage. Here, her classmates engage in "Revues," spectacular duels where they sing, dance, and battle with very real weapons for the title of "Top Star."</p>
+                        <p>This central concept is a stroke of genius, taking the cutthroat competition of theatrical auditions and transforming it into a literal war for supremacy. As one reviewer notes, the high school theater scene can be a ruthless environment, and Revue Starlight brilliantly literalizes the figurative battles that performers face. The story critiques systems like the Takarazuka Revue, a real-life, notoriously competitive Japanese theater company, where the elevation of a single star often comes at the expense of the ensemble.</p>
+                        <img src="https://file.garden/athyPmO97V3PZx2U/gif/kaosi-karen.gif" style="max-width: 500px;" class="post-inline-gif" alt="Revue Starlight image 1">
+						<p>However, the series proposes a different path. Through Karen, who is determined to share the stage with her childhood friend Hikari, the show champions the idea that the stage is meant to be shared. It posits that the most brilliant performances are born not from solitary ambition, but from the collective effort of everyone working together to make the entire stage shine.</p>
+                        <h6>The Cast: A Constellation of Stage Girls</h6>
+                        <p>What truly makes Revue Starlight shine is its cast of nine beautifully realized characters, each with their own fears, desires, and motivations. The series dedicates its first half to exploring these dynamics, ensuring the audience is deeply invested in every girl's journey.</p>
+                        <p>We have:</p>
+                        <ul>
+                            <li>Karen Aijo: The "idiot hero" who isn't as simple as she seems, driven by a promise to share the spotlight with her friend.</li>
+                            <li>Hikari Kagura: The mysterious transfer student and Karen's childhood friend, whose past holds the key to the Revues.</li>
+                            <li>Mahiru Tsuyuzaki: Karen's roommate, whose initial admiration for Karen evolves into a powerful love and a desire to prove her own worth.</li>
+                            <li>Nana "Banana" Daiba: The motherly figure who, in a stunning twist, is revealed to be trapping her friends in a time loop to preserve a perfect moment, a poignant exploration of the fear of moving forward.</li>
+                            <li>Junna Hoshimi: The studious class president who envies her more naturally gifted classmates and is defined by her reliance on the wisdom of others, a trait she learns to turn into a strength.</li>
+                            <li>Kaoruko Hanayagi and Futaba Isurugi: A haughty rich girl and her devoted, motorcycle-riding partner whose codependent relationship evolves into one of equals.</li>
+                            <li>Claudine Saijo and Maya Tendo: The perennial "second place" and the untouchable "Top Star," whose intense rivalry defines them both and pushes them to greater heights.</li>
+                        </ul>
+                        <img src="https://file.garden/athyPmO97V3PZx2U/gif/revue-starlight-eating.gif" style="max-width: 500px;" class="post-inline-gif" alt="Revue Starlight image 2">
+						<p>Each character's arc is a compelling journey of self-discovery, culminating in the movie where their relationships and personalities are fully realized and given proper, meaningful conclusions.</p>
+                        <h6>The Revues: Where Spectacle Meets Soul</h6>
+                        <p>The Revues are the heart of the franchise, and they are nothing short of breathtaking. These are not mere action sequences; they are a perfect fusion of music, choreography, and visual storytelling that delves deep into the characters' psyches. The songs themselves are narrative powerhouses, each one telling a story as complex as a novel.</p>
+                        <p>The movie elevates the Revues to an entirely new level. They are longer, more elaborate, and emotionally devastating. From the shocking "Revue of Annihilation," where Nana single-handedly defeats six of her friends on a moving train, to the deeply personal "Revue of Hunting," which sees Nana and Junna confront the core of their conflicting ideologies, each battle is a visual and thematic masterpiece. The "Revue of Souls" between Maya and Claudine is a particular highlight, a long-awaited clash of gods that explores their symbiotic rivalry with stunning creativity.</p>
+                        <p>These sequences are filled with intricate details and metaphors that reward endless analysis, confirming that every element, from weapon choice to musical motifs, is intentional.</p>
+                        <h6>The Movie: A Grand, Apocalyptic Finale</h6>
+                        <p>Initially, a sequel movie felt unnecessary. The 12-episode series had a seemingly perfect, conclusive ending that beautifully wrapped up its themes about the necessity of moving on. Continuing the story seemed to betray its very message.</p>
+                        <p>I could not have been more wrong.</p>
+                        <p>The Revue Starlight movie is an astounding work of cinema that brilliantly makes the question of its own existence its central theme. It asks: where do we go from here, now that the original story is over? This metatextual uncertainty becomes the driving force for a new, more intense series of Revues where the girls must fight not for a title, but for their very futures.</p>
+                        <img src="https://file.garden/athyPmO97V3PZx2U/gif/anime-anime-girl.gif" style="max-width: 500px;" class="post-inline-gif" alt="Revue Starlight image 3">
+						<p>The film is essentially a "cinematic self-sacrifice," a deconstruction of the franchise that burns itself to the ground so that its characters can be truly free. It argues that for the stage girls to escape the endless cycle of performance and struggle, the story of Revue Starlight itself must end. The result is a finale that is both tragic and hopeful, a heartbreaking yet triumphant conclusion that sees each girl become the protagonist of her own life.</p>
+                        <h6>The Final Curtain Call</h6>
+                        <p>Revue Starlight is more than just an anime; it's an experience. It's a love letter to the chaos, passion, and transformative power of theater. And we, as the audiences, can witness their ambitions, their fears, their triumphs, and their failures. The show understands the thrill of building a story with your own hands and the terror of feeling your passion fade. It is a story that, like the best theater, rushes headfirst into despair but emerges with a message of unflinching hope.</p>
+                        <p>It is a story about choosing your own destiny, rejecting the scripts of the past, and writing your own future alongside the point who make the stage worth standing on. This franchise has achieved its own impossible dream, and for that, it deserves a standing ovation. Thank you, Revue Starlight, for one of the greatest curtain calls in cinematic history.</p>
+                        <img src="https://file.garden/athyPmO97V3PZx2U/gif/revue-starlight-shoujou-kageki.gif" style="max-width: 500px;" class="post-inline-gif" alt="Revue Starlight image 4">
+						<hr class="retro-hr">
+						<h6>References & Sources</h6>
+                        <p>For more info, check out the anime official website: <a href="https://revuestarlight.com/" target="_blank">https://revuestarlight.com/</a></p>
+                    </div>
+
+                    <div id="blog-view-universe-post-1" class="blog-view post-content">
+                        <h3 class="post-title">Finding My Own Place Further Than The Universe</h3>
+						<p>(WARNING: Only the introduction and the final section of this blog post is spoiler-free,)</p>
+                        <p>You know that feeling? When you scroll through social media and see people having these huge adventures, and you think, "I want to do that someday"? It's also the same voice that says, "I'll start tomorrow," the safety of a routine that asks for nothing new, and the quiet fear that holds you back from taking that first, terrifying step into the unknown. A Place Further Than the Universe, this anime completely called me out. This 12-episode series isn't just a story about four high school girls going to Antarctica; it's a powerful, resonant call to action. It's a story that looked me right in the eyes and challenged me to stop waiting for the right moment, to stop procrastinating and start doing. It's more than just my favorite anime; it's the story that gave me this urge, this motivation to actually start something new, to chase my own adventures.</p>
+                        <img src="https://file.garden/athyPmO97V3PZx2U/gif/yorimoi-sora-yori.gif" style="max-width: 500px;" class="post-inline-gif" alt="Yorimoi image 3">
+						<h6>A girl whose biggest dream is just to start</h6>
+                        <p>The show kicks off with Mari Tamaki, a high schooler who feels like her youth is just... happening without her. She has this big list of things she wants to do, but every time she gets a chance, she chickens out. She wants to make the most of her high school days, to have grand adventures she can look back on, but she is paralyzed by fear. Every time she tries to do something spontaneous, like skipping school for a solo trip, her anxiety takes over, and she retreats to the safety of her uneventful life. Honestly, It's super relatable, the feeling of being your own worst enemy, stuck on the sidelines of your own life.</p>
+                        <h6>A girl named "Antarctica"</h6>
+                        <p>Then Kimari meets Shirase Kobuchizawa. At school, everyone makes fun of Shirase, calling her "Antarctica", because she's obsessed with going to Antarctica. It's not just a random dream, though; her mom went missing there on an expedition, and Shirase is determined to go to the same place. Despite everyone telling her it's absurd and impossible for a high schooler to go to Antarctica, but Shirase just does not care. She saves up her money from part-time jobs and ignores all the haters. Seeing that kind of determination is what finally sparks something in Kimari. She decides she's done being scared and asks to join Shirase on her impossible mission. Soon, two other girls, the super-energetic Hinata and the child-actor Yuzuki, jump on board, and suddenly, this crazy dream starts to feel real.</p>
+  
+						<h6>It's not just about Antarctica</h6>
+                        <p>One of the most brilliant aspects of the show is that it's real about what it takes to do something big. The girls don't just magically appear in Antarctica, no. We get to see them struggle. The series dedicates more than half its runtime to the girls simply overcoming the mundane and tedious obstacles required to make their dream a reality. We see them working to earn money, training, dealing with a lost passport, and even getting ridiculously seasick. Reaching a goal is rarely a single, glorious leap; it's a series of small, often difficult, steps, and by not skipping over this process, the show makes their achievement feel earned and incredibly inspiring. Antarctica itself becomes a metaphor for growing up, for seizing control of your life, and for breaking free from the monotonous cycle of an unchanging daily routine. The destination is the reward, but the grind is where you actually grow as a person.</p>
+                        <img src="https://file.garden/athyPmO97V3PZx2U/gif/sora-yori-cry.gif" style="max-width: 500px;" class="post-inline-gif" alt="Yorimoi image 3">
+						<h6>The Power of Friendship</h6>
+                        <p>This whole adventure is held together by the amazing friendship between the four girls. Their chemistry feels natural and believable, you can clearly tell the writers put a lot of heart into making their bond feel earned and genuine. They tease each other, they argue, they fight, but also have these incredibly sweet and supportive moments that just hit you right in the feels. You end up rooting for them so hard, not just to get to Antarctica, but for their friendship to last forever. And it's this genuine bond that is the engine of the show, the proof that having people who believe in you can make even the most impossible dreams feel within reach.</p>
+                        <img src="https://file.garden/athyPmO97V3PZx2U/gif/sora-yori-mo-tooi-basho-a-place-further-than-the-universe.gif" style="max-width: 500px;" class="post-inline-gif" alt="Yorimoi image 3">
+						<h6>Why You Should Watch This Show</h6>
+                        <p>I'm so glad I found this show when I did. A Place Further Than the Universe moved me in a way few stories ever have. It's a show brimming with moments of pure, unfiltered joy and sob-inducing emotional payoffs that are set up episodes in advance and always feel deserved. The show is a beautiful reminder that while the world is full of mesmerizing places, the most important journey is the one that takes you beyond your own limitations. It's a story about youth, friendship, and heartbreak, but above all, it's a story about the yearning to achieve something more with your life. So, if you've got a dream that feels a little too big or a little too crazy, or maybe just want to feel motivated to work towards your dream, please, watch this show. It might just be the push you need to start dreaming, start the project, or just take that first, scary step toward your own goals. So, as this anime motivates me to go out of my comfort zone and start something new, I hope it does the same for you.</p>
+                        <img src="https://file.garden/athyPmO97V3PZx2U/gif/2sora-yori-mo-tooi-basho-a-place-further-than-the-universe.gif" style="max-width: 500px;" class="post-inline-gif" alt="Yorimoi image 4">
+						<hr class="retro-hr">
+						<h6>References & Sources</h6>
+						<p>For more info, check out the anime official website: <a href="https://yorimoi.com/" target="_blank">https://yorimoi.com/</a></p>
+                    </div>
+
+                    <div id="blog-view-shimeji-post-1" class="blog-view post-content">
+                        <h3 class="post-title">Shimeji Simulation: Reality is a beautiful, crumbling dream, but the hand you hold at the end is real.</h3>
+                        <p><em>The nature of reality might be a terrifying, unsolvable illusion, but the girls are cute, and sometimes that is all that matters.</em></p>
+                        
+                        <img src="https://files.catbox.moe/er0hj6.png" style="max-width: 300px;" class="post-inline-image" alt="Shimeji Simulation Image 1">
+                        
+                        <p>Your experience with this manga ultimately comes down to your expectations. If you approach it hoping for a hard psychological sci-fi that deeply analyzes its concepts, it will inevitably feel shallow, dropping heavy philosophical terms only to abandon them. However, if you shift your expectations and treat it as an existential slice-of-life, the manga transforms into a phenomenal piece of art.</p>
+                        
+                        <p>As a pure intellectual exercise, the series creates the illusion of depth without doing the heavy lifting. It touches on weighty themes like the nature of reality, the fragility of the self, the subconscious etc. but treats them as aesthetic mood-setters. It introduces a huge existential premise, ponders it for a few panels, and stops. This habit of window-shopping for philosophy without making a purchase can be seen for instance in chapter 38 when it name-drops the "collective unconscious." Anyone familiar with <a href="https://anilist.co/anime/339/serial-experiments-lain/" target="_blank">Serial Experiments Lain</a> might brace for a deep dive. But while <a href="https://anilist.co/anime/339/serial-experiments-lain/" target="_blank">Lain</a> breaks down these concepts to challenge the viewer, Shimeji Simulation merely points at the idea and keeps walking.</p>
+                        
+                        <p>Yet, that is exactly where the manga succeeds: when you stop asking it to be a philosophical textbook and let it wash over you as a surreal mood piece. Tsukumizu’s shaky, fluid linework perfectly matches the dreamlike logic of a world where architecture bends without warning and characters walk around with fried eggs permanently resting on their heads. It filters the comforting CGDCT genre through quiet, absurdist psychedelia to craft a gentle fever dream. Once you reframe the manga as an experience, the loose ends cease to be a flaw and instead embody quiet existential dread. What if the fever dream <em>is</em> the bedrock of reality? Unlike psychological surrealism like <a href="https://anilist.co/anime/339/serial-experiments-lain/" target="_blank">Lain</a> or <a href="https://anilist.co/anime/1943/Paprika/" target="_blank">Paprika</a>, which treats the breakdown of reality as a violent, sensory-overloaded rupture, Shimeji Simulation treats it with an eerie gentleness. When the geometry of a room unfurls like paper, nobody screams. The world simply reshapes itself, and you accept the absurd premises without question, just like in a dream.</p>
+                        
+                        <p>Within this dream logic, Shijima's passive pondering mimics the feeling of waking up—where half-baked thoughts feel heavy with cosmic significance but slip through your fingers the moment you try to pin them down. Instead of panicking as the fabric of reality unravels, the characters accept the impossible as if it were just another Tuesday. It is a perfect meta-commentary on the entire series: reality is fundamentally absurd, and the only valid response is not to solve the surrealism, but to quietly witness it unfold.</p>
+                        
+                        <img src="https://imglink.cc/cdn/Ks4-ceRA0F.png" style="max-width: 550px;" class="post-inline-image" alt="Shimeji Simulation Image 2">
+                        
+                        <h6>About the ending</h6>
+                        <p>From Chapter 43 onward, the manga completely sheds its slice-of-life framework, accelerating into pure abstraction. The simulation collapses into periods of visual chaos, represented by erratic shapes taking over the panels. As the simulation deteriorates, the supporting cast disappears, leaving behind a profound sense of isolation until even Majime vanishes.</p>
+                        
+                        <p>This forces Shijima out of her passive observation and into a desperate search through the void. Shijima's character arc peaks here. The girl who once hid from the world inside a closet now throws herself into a disintegrating universe just to find one specific person. The visual storytelling matches this emotional climax, pushing the 4-koma format to its limits as the art dissolves into sprawling, incomprehensible landscapes. Traveling across various "personal planets" over what feels like years, she braves the dissolving universe. This final act is a masterful escalation of the dread that simmered beneath the entire series, isolating its most vital theme: the necessity of human connection in a meaningless, fluid reality.</p>
+                        
+                        <p>The ending eschews a traditional tragic apocalypse for something much more intimate. Choosing to exist together in an empty, self-made world serves as a quiet, beautiful testament to the idea that even if the universe is just a temporary, nonsensical simulation, the bonds formed within it are undeniably real.</p>
+                        
+                        <img src="https://imglink.cc/cdn/1cOQ9YjoED.png" style="max-width: 550px;" class="post-inline-image" alt="Shimeji Simulation Image 3">
+						<hr class="retro-hr">
+						<h6>References & Sources</h6>
+                        <p>Check out the manga here: <a href="https://comic-walker.com/contents/detail/KDCW_MF06201465010000_68" target="_blank">Comic Walker</a></p>
+					
+					</div>
+                </div>
+
+                <div id="links-content" class="content-section">
+                    <div class="section-title">Links</div>
+                    <p>Check out these cool sites:</p>
+                     <ul class="retro-list">
+                        <li>Be up to date with your yuri: <a href="https://yurinavi.com/">yurinavi.com</a></li>
+                        <li>Quick and simple file hosting service: <a href="https://catbox.moe/">catbox.moe</a></li>
+                        <li>Similar to catbox.moe but for temporary files: <a href="https://litterbox.catbox.moe/">litterbox.catbox.moe</a></li>
+						<li>Web-based hex editor: <a href="https://hexed.it/">hexed.it</a></li>
+						<li>Reverse search anime scene: <a href="https://trace.moe/">trace.moe</a></li>
+						<li>Web-based photoshop: <a href="https://www.photopea.com/">photopea.com</a></li>
+						<li>Awesome repo: <a href="https://cat-milk.github.io/Anime-Girls-Holding-Programming-Books/">anime girls holding programming books</a></li>			
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <button class="back-button">◄ Back</button>
+                </div>
+                <div class="sidebar-section">
+                    <div class="visitor-counter">
+                        <div class="visitor-counter-title">VISITOR COUNTER</div>
+                        <div class="visitor-number" id="visitor-count">000001</div>
+                        <div class="visitor-message">You are visitor number:</div>
+                    </div>
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Links for cool people</div>
+                     <ul class="retro-list">
+                        <li><a href="https://keepandroidopen.org/">Keep Android Open</a></li>
+                        <li><a href="https://www.thetrevorproject.org">The Trevor Project</a></li>
+                        <li><a href="https://equalitynow.org/">Women's Rights</a></li>
+						<li><a href="https://blacklivesmatter.com">Black Lives Matter</a></li>
+						<li><a href="https://stopaapihate.org/">Stop Asian Hate</a></li>	
+						
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Radio Station</div>
+					<ul class="retro-list" id="lastfm-tracks">
+						<li id="lastfm-status">Loading tracks...</li>
+					</ul>
+                    <img src="https://media1.tenor.com/m/-iLd5zWMeD4AAAAd/zaku-dance.gif" alt="Current Mood GIF" class="mood-gif">
+                </div>
+				
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Web Rings</div>
+                     <div class="button-container">
+
+						<a href="https://yachiyo.net/#/en" target="_blank" title="yachiyo">
+							<img src="banner_jp.gif" alt="yachiyo fansite">
+						</a>
+        
+						<a target="_blank">
+							<img src="sucks.gif">
+						</a>
+						
+						<a target="_blank">
+							<img src="bu12.gif">
+						</a>	
+						
+
+						
+						<a href="https://me.komari.site/link/" target="_blank">
+							<img src="k4ahr.gif" alt="Chud">
+						</a>
+						
+						<a target="_blank">
+							<img src="vocaloid.gif">
+						</a>
+					
+						<a target="_blank">
+							<img src="madewithlove.gif">
+						</a>											
+						
+					 </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <span>In progress</span>
+            <span>Last modified: Oct 21, 2026</span>
+            <span>© 2026 TM</span>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navButtons = document.querySelectorAll('.nav-button');
+    const breadcrumb = document.getElementById('blog-breadcrumb');
+    const guestbookToggle = document.querySelector('.guestbook-toggle');
+    const guestbookContent = document.querySelector('.guestbook-content');
+    const backButton = document.querySelector('.back-button');
+    const muteBtn = document.getElementById('mute-button');
+    const nextSongBtn = document.getElementById('next-song-button');
+    const speakerOn = document.getElementById('speaker-on');
+    const speakerOff = document.getElementById('speaker-off');
+    const audioStatusEl = document.getElementById('audio-status');
+
+    const playlist = [        
+		'https://file.garden/athyPmO97V3PZx2U/2Sleep%20Music%20No.%201%20-%20Chris%20Haugen.mp3',
+        'https://files.catbox.moe/yl34ru.mp3',
+        'https://files.catbox.moe/zz0ngf.mp3',
+        'https://file.garden/athyPmO97V3PZx2U/4Helium%20-%20TrackTribe.mp3'
+    ];
+    let currentTrackIndex = 0;
+    const audio = new Audio();
+    audio.loop = true;
+
+	audio.addEventListener('error', () => {
+    currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+    playTrack(currentTrackIndex);
+});
+
+    let navigationHistory = [];
+    let hasInteracted = false;
+    let loadingInterval;
+
+    function updateVisitorCounter() {
+        let count = parseInt(localStorage.getItem('visitorCount') || '1284');
+        count++;
+        localStorage.setItem('visitorCount', count.toString());
+        const counterEl = document.getElementById('visitor-count');
+        if (counterEl) {
+            counterEl.textContent = count.toString().padStart(6, '0');
+        }
+    }
+    updateVisitorCounter();
+
+    function showLoadingIndicator() {
+        let dotCount = 1;
+        audioStatusEl.textContent = 'Loading BGM.';
+        clearInterval(loadingInterval);
+        loadingInterval = setInterval(() => {
+            dotCount = (dotCount % 3) + 1;
+            audioStatusEl.textContent = 'Loading BGM' + '.'.repeat(dotCount);
+        }, 500);
+    }
+
+    function updateTrackIndicator() {
+        clearInterval(loadingInterval);
+        const trackNumber = (currentTrackIndex + 1).toString().padStart(3, '0');
+        audioStatusEl.textContent = `Track: ${trackNumber}`;
+    }
+
+    async function playTrack(index) {
+        showLoadingIndicator();
+        audio.src = playlist[index];
+        
+        const audioPromise = new Promise(resolve => {
+            audio.addEventListener('canplaythrough', resolve, { once: true });
+        });
+
+        const minTimePromise = new Promise(resolve => setTimeout(resolve, 1500));
+
+        await Promise.all([audioPromise, minTimePromise]);
+        
+        if (hasInteracted && !audio.muted) {
+            audio.play().catch(e => console.error("Autoplay was prevented.", e));
+        }
+        updateTrackIndicator();
+    }
+
+    function initialPlay() {
+        if (hasInteracted) return;
+        hasInteracted = true;
+        if (!audio.muted) {
+            audio.play().catch(e => console.error("Autoplay was prevented.", e));
+        }
+    }
+    
+    document.body.addEventListener('click', initialPlay, { once: true });
+
+    function showView(viewId, isBack = false) {
+        if (!isBack) {
+            const currentActive = document.querySelector('.blog-view.active') || document.querySelector('.content-section.active');
+            if (currentActive && currentActive.id) {
+                navigationHistory.push(currentActive.id);
+            }
+        }
+
+        document.querySelectorAll('.content-section, .blog-view').forEach(v => v.classList.remove('active'));
+
+        const targetView = document.getElementById(viewId);
+        if (targetView) {
+            targetView.classList.add('active');
+            if (targetView.classList.contains('blog-view')) {
+                document.getElementById('blog-content').classList.add('active');
+                updateBreadcrumb(viewId);
+            }
+        }
+
+        navButtons.forEach(btn => {
+            btn.classList.remove('active-nav');
+            if (viewId.startsWith(btn.dataset.section)) {
+                btn.classList.add('active-nav');
+            }
+        });
+    }
+
+    navButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionId = button.dataset.section;
+            if (sectionId === 'blog') {
+                showView('blog-view-categories');
+            } else {
+                showView(sectionId + '-content');
+            }
+        });
+    });
+
+    function updateBreadcrumb(viewId) {
+        let html = `<a href="#" class="blog-nav-link" data-view="blog-view-categories">Blogpost</a>`;
+        if (viewId === 'blog-view-gundam-subcategories') {
+            html += ` &gt; Gundam`;
+        } else if (viewId === 'blog-view-gunpla-posts') {
+            html += ` &gt; <a href="#" class="blog-nav-link" data-view="blog-view-gundam-subcategories">Gundam</a> &gt; Gunpla`;
+        } else if (viewId.startsWith('blog-view-gunpla-post-')) {
+            html += ` &gt; <a href="#" class="blog-nav-link" data-view="blog-view-gundam-subcategories">Gundam</a> &gt; <a href="#" class="blog-nav-link" data-view="blog-view-gunpla-posts">Gunpla</a>`;
+        } else if (viewId === 'blog-view-animemanga-posts') {
+            html += ` &gt; Anime/Manga`;
+        } else if (viewId === 'blog-view-revue-post-1' || viewId === 'blog-view-universe-post-1' || viewId === 'blog-view-shimeji-post-1') {
+            html += ` &gt; <a href="#" class="blog-nav-link" data-view="blog-view-animemanga-posts">Anime/Manga</a>`;
+        }
+        breadcrumb.innerHTML = html;
+    }
+	
+    document.getElementById('blog-content').addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+        if (!target) return;
+
+        if (target.matches('.blog-nav-link')) {
+            e.preventDefault();
+            const viewId = target.dataset.view;
+            if (viewId) showView(viewId);
+        }
+    });
+
+    if(guestbookToggle) {
+        guestbookToggle.addEventListener('click', () => {
+            if(guestbookContent) guestbookContent.classList.toggle('active');
+        });
+    }
+    
+    if(backButton) {
+        backButton.addEventListener('click', () => {
+            const lastViewId = navigationHistory.pop();
+            if (lastViewId) {
+                showView(lastViewId, true);
+            } else {
+                showView('home-content', true);
+            }
+        });
+    }
+
+    if(muteBtn) {
+        muteBtn.addEventListener('click', () => {
+            audio.muted = !audio.muted;
+            speakerOn.classList.toggle('hidden');
+            speakerOff.classList.toggle('hidden');
+        });
+    }
+
+    if(nextSongBtn) {
+        nextSongBtn.addEventListener('click', () => {
+            currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+            playTrack(currentTrackIndex);
+        });
+    }
+
+    showView('home-content', true);
+    playTrack(currentTrackIndex);
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const username = 'tylermarshman';
+    const apiKey = '80cccad75283e17e2b9157877bb8db56';
+    const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`;
+
+    const lastFmContainer = document.getElementById('lastfm-tracks');
+
+    // Fetch the data from Last.fm
+    fetch(url)
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            // Check if there are tracks
+            if (data.recenttracks && data.recenttracks.track.length > 0) {
+                const track = data.recenttracks.track[0];
+                const trackName = track.name;
+                const artistName = track.artist['#text'];
+                const trackUrl = track.url;
+                
+                // Check if the user is currently listening or if it's a past scrobble
+                const isNowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
+                const statusText = isNowPlaying ? '<span class="blink">Now Playing:</span>' : 'Last Played:';
+
+                // Format the output
+                lastFmContainer.innerHTML = `
+                    <li>
+                        ${statusText}<br>
+                        <a href="${trackUrl}" target="_blank" style="font-weight: bold;">${trackName}</a><br>
+                        by ${artistName}
+                    </li>
+                `;
+            } else {
+                lastFmContainer.innerHTML = '<li>No recent tracks found.</li>';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching Last.fm data:', error);
+            lastFmContainer.innerHTML = '<li>Unable to load tracks.</li>';
+        });
+});
+</script>
+
+
+
+</body>
+</html>

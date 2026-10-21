@@ -1,0 +1,520 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Disable modern text smoothing for authentic jagged 2000s text */
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: unset;
+    text-rendering: crispEdges;
+}
+
+/* --- Custom Retro Scrollbar (IE6 / Win98 Style) --- */
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    background-image: repeating-linear-gradient(45deg, #e0e0e0, #e0e0e0 2px, #eeeeee 2px, #eeeeee 4px);
+}
+::-webkit-scrollbar-thumb {
+    background: #d4d0c8;
+    border: 2px outset #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+    border: 2px inset #ffffff;
+}
+::-webkit-scrollbar-button {
+    background: #d4d0c8;
+    border: 2px outset #ffffff;
+    width: 16px;
+    height: 16px;
+}
+
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #000000;
+    background-color: #008080; /* Classic Win95 teal fallback */
+    line-height: 1.5;
+    padding: 15px 10px;
+    position: relative;
+}
+
+/* We apply the color-reduction filter ONLY to the background image, keeping text clean */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://i.postimg.cc/xCBCgJFp/endless-waltz-wallpaper.jpg') repeat fixed;
+    filter: url(#web-safe-colors) contrast(1.2);
+    z-index: -2;
+}
+
+/* Semi-transparent overlay just to make the background less distracting */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 128, 128, 0.4);
+    z-index: -1;
+}
+
+/* --- Main Outer Windows Box --- */
+.container {
+    max-width: 840px;
+    margin: 0 auto;
+    background-color: #d4d0c8; /* Windows classic gray */
+    border: 2px outset #ffffff;
+    padding: 3px;
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.7);
+}
+
+/* --- Classic Title Bar --- */
+.title-bar {
+    background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+    color: #ffffff;
+    padding: 3px 6px;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+/* --- Retro Header --- */
+.header {
+    text-align: center;
+    background: #000044;
+    color: #ffffff;
+    padding: 18px 10px;
+    border: 2px inset #808080;
+    margin-bottom: 8px;
+    background-color: #000040;
+}
+
+.header h1 {
+    font-family: 'Trebuchet MS', Tahoma, sans-serif;
+    font-size: 22px;
+    color: #ffff00;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.header p {
+    font-family: Tahoma, Verdana, sans-serif;
+    font-size: 11px;
+    color: #00ffff;
+}
+
+/* --- Classic Nav Bar --- */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-bottom: 12px;
+    background: #d4d0c8;
+    padding: 4px;
+    border: 1px solid #808080;
+}
+
+.nav-button {
+    background: #e4e4e4;
+    border: 2px outset #ffffff;
+    padding: 6px 8px;
+    text-decoration: none;
+    color: #000000 !important;
+    font-family: Tahoma, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background: #f5f5f5;
+    color: #000080 !important;
+}
+
+.nav-button:active, .nav-button.active-nav {
+    border: 2px inset #ffffff;
+    background: #dcdcdc;
+    padding: 7px 7px 5px 9px;
+}
+
+/* --- Layout Grid (FIXED OVERLAP ISSUE) --- */
+.main-content {
+    display: grid;
+    /* Force exact 220px sidebar, allow main content to shrink */
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.content-panel {
+    background-color: #ffffff;
+    border: 2px inset #d4d0c8;
+    padding: 14px;
+    /* These properties ensure long unbroken text wraps instead of breaking the grid */
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.sidebar {
+    background-color: #f7f6f0;
+    border: 2px inset #d4d0c8;
+    padding: 10px;
+}
+
+.section-title, .breadcrumb {
+    background: linear-gradient(90deg, #000080 0%, #3a6ea5 100%);
+    color: #ffffff;
+    padding: 4px 8px;
+    margin: -14px -14px 12px -14px;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    border-bottom: 1px solid #000000;
+}
+
+.breadcrumb a, .breadcrumb a:visited { 
+    color: #ffff00; 
+    text-decoration: underline; 
+    cursor: pointer; 
+}
+.breadcrumb a:hover { 
+    color: #ffffff; 
+}
+
+.sidebar-section {
+    margin-bottom: 14px;
+}
+
+.sidebar-title {
+    background: #000080;
+    color: #ffffff;
+    padding: 3px 6px;
+    margin: 0 0 6px 0;
+    font-weight: bold;
+    font-size: 11px;
+    font-family: Tahoma, sans-serif;
+    border: 1px solid #000000;
+}
+
+/* --- The Authentic Image Downgrade --- */
+img {
+    /* Applies the 256-color web-safe palette simulation */
+    filter: url(#web-safe-colors) contrast(1.1);
+    /* Forces browsers to use blocky scaling instead of smooth blurring */
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    max-width: 100%;
+    height: auto;
+}
+
+.post-inline-image, .category-header-image {
+    border: 1px solid #000;
+    margin: 10px 0;
+}
+
+.post-inline-gif {
+    border: 1px solid #000;
+    margin: 10px 0;
+    filter: none; /* This allows the GIF to animate */
+}
+
+/* Keep GIF files exempt from the filter if you want them to animate smoothly */
+.intro-gif img, .mood-gif {
+    filter: none;
+    border: none;
+}
+
+/* --- Typography & Lists --- */
+p, li, td {
+    font-size: 11px;
+    line-height: 1.5;
+    color: #000000;
+}
+
+p { margin-bottom: 8px; }
+
+h3 {
+    font-family: 'Trebuchet MS', Tahoma, sans-serif;
+    font-size: 13px;
+    color: #000080;
+    margin: 12px 0 6px 0;
+    border-bottom: 1px solid #c0c0c0;
+    padding-bottom: 2px;
+}
+
+.retro-list {
+    list-style-type: square;
+    padding-left: 18px;
+    margin-bottom: 10px;
+}
+
+a { color: #0000ee; text-decoration: underline; }
+a:visited { color: #551a8b; }
+a:hover { color: #ff0000; }
+
+.blink {
+    animation: blink 1s infinite;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+.retro-hr {
+    border: none;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    margin: 12px 0;
+}
+
+.retro-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+}
+
+.retro-table td, .retro-table th {
+    border: 1px solid #808080;
+    padding: 4px 6px;
+    text-align: left;
+    font-size: 11px;
+}
+
+.retro-table th {
+    background: linear-gradient(180deg, #f0f0f0 0%, #e4e4e4 100%);
+    font-weight: bold;
+    color: #000080;
+}
+
+/* --- Visitor Counter --- */
+.visitor-counter {
+    background-color: #000000;
+    border: 2px inset #808080;
+    padding: 8px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.visitor-counter-title {
+    font-family: Tahoma, sans-serif;
+    font-size: 9px;
+    color: #aaaaaa;
+    margin-bottom: 4px;
+}
+
+.visitor-number {
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    color: #00ff00;
+    background: #111111;
+    border: 1px solid #333333;
+    padding: 2px 6px;
+    display: inline-block;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.visitor-message {
+    font-family: Tahoma, sans-serif;
+    font-size: 10px;
+    color: #ffffff;
+    margin-top: 4px;
+}
+
+/* --- Buttons & Guestbook --- */
+.guestbook-toggle, .back-button {
+    background-color: #d4d0c8;
+    border: 2px outset #ffffff;
+    padding: 4px;
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+    font-size: 11px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 8px;
+    font-family: Tahoma, sans-serif;
+}
+
+.guestbook-toggle:active, .back-button:active {
+    border: 2px inset #ffffff;
+}
+
+.guestbook-content {
+    display: none;
+    background-color: #f5f5f5;
+    border: 1px solid #808080;
+    padding: 10px;
+    margin-top: 6px;
+}
+
+.guestbook-content.active {
+    display: block;
+}
+
+.guestbook-form div {
+    margin-bottom: 6px;
+}
+
+.guestbook-form label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.guestbook-form input[type="text"], 
+.guestbook-form input[type="email"], 
+.guestbook-form textarea {
+    width: 100%;
+    padding: 3px;
+    border: 1px solid #7f9db9;
+    font-family: Tahoma, sans-serif;
+    font-size: 11px;
+    background: #ffffff;
+}
+
+.guestbook-form input[type="submit"] {
+    background: #d4d0c8;
+    border: 2px outset #ffffff;
+    padding: 3px 10px;
+    font-family: Tahoma, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.guestbook-form input[type="submit"]:active {
+    border: 2px inset #ffffff;
+}
+
+/* --- Content Toggling --- */
+.content-section { display: none; }
+.content-section.active { display: block; }
+
+/* --- Blog Styles --- */
+.blog-view { display: none; }
+.blog-view.active { display: block; }
+.category-list > li > a { font-weight: bold; font-size: 12px; }
+.post-list { list-style-type: none; padding-left: 0; }
+.post-list li { margin-bottom: 8px; }
+.post-link-title { font-size: 12px; color: #0000ee; text-decoration: underline; font-weight: bold; }
+.post-link-subtitle { font-size: 10px; color: #555555; margin-top: 1px; }
+.post-content .post-title { font-size: 15px; color: #000080; margin-bottom: 10px; border-bottom: 2px solid #000080; padding-bottom: 4px; font-family: 'Trebuchet MS', Tahoma, sans-serif; }
+.post-content h6 { font-size: 11px; margin: 12px 0 4px 0; color: #000080; font-weight: bold; }
+.references-list { list-style-type: decimal; padding-left: 20px; }
+
+/* --- Status Bar --- */
+.status-bar {
+    background-color: #d4d0c8;
+    border: 1px solid #808080;
+    padding: 2px 4px;
+    font-size: 11px;
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    gap: 2px;
+    font-family: Tahoma, sans-serif;
+}
+
+.status-bar span {
+    border: 1px inset #ffffff;
+    padding: 1px 4px;
+    background: #e4e4e4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- Audio Controls --- */
+#audio-controls {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: #d4d0c8;
+    border: 2px outset #ffffff;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    width: 130px;
+}
+
+.audio-buttons-wrapper {
+    display: flex;
+    gap: 4px;
+}
+
+.audio-button {
+    cursor: pointer;
+    flex: 1;
+    height: 20px;
+    background-color: #d4d0c8;
+    border: 2px outset #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-button:active {
+    border-style: inset;
+}
+
+.audio-button svg {
+    width: 12px;
+    height: 12px;
+    fill: #000000;
+}
+
+#audio-status {
+    color: #00ff00;
+    font-size: 9px;
+    font-family: 'Courier New', monospace;
+    background-color: #000000;
+    border: 1px inset #808080;
+    padding: 2px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.hidden { display: none !important; }
+
+@media (max-width: 650px) {
+    .nav-grid { grid-template-columns: repeat(2, 1fr); }
+    .main-content { grid-template-columns: 1fr; }
+    #audio-controls {
+        position: relative;
+        top: 0; left: 0; width: 100%; margin-bottom: 8px;
+    }
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    padding-top: 4px;
+}
+
+.button-container img {
+    width: 88px;
+    height: 31px;
+    border: none; /* Some old buttons look better without borders */
+    image-rendering: pixelated; /* Keeps the GIF crisp */
+}

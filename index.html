@@ -669,11 +669,15 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
 
     const username = 'tylermarshman';
-    const apiKey = '80cccad75283e17e2b9157877bb8db56';
+    const apiKey = '80cccad75283e17e2b9157877bb8db56'; //spare me and my API key alright
     const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`;
 
     const lastFmContainer = document.getElementById('lastfm-tracks');
 
+    const cachedData = localStorage.getItem('lastFmCache');
+    if (cachedData) {
+        lastFmContainer.innerHTML = cachedData;
+    }
 
     fetch(url)
         .then(response => {
@@ -682,35 +686,41 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
 
+            if (data.error) throw new Error(data.message);
+
             if (data.recenttracks && data.recenttracks.track.length > 0) {
                 const track = data.recenttracks.track[0];
                 const trackName = track.name;
                 const artistName = track.artist['#text'];
                 const trackUrl = track.url;
                 
-
                 const isNowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
                 const statusText = isNowPlaying ? '<span class="blink">Now Playing:</span>' : 'Last Played:';
 
-
-                lastFmContainer.innerHTML = `
+                const htmlContent = `
                     <li>
                         ${statusText}<br>
                         <a href="${trackUrl}" target="_blank" style="font-weight: bold;">${trackName}</a><br>
                         by ${artistName}
                     </li>
                 `;
+                
+                lastFmContainer.innerHTML = htmlContent;
+                localStorage.setItem('lastFmCache', htmlContent);
+                
             } else {
                 lastFmContainer.innerHTML = '<li>No recent tracks found.</li>';
             }
         })
         .catch(error => {
             console.error('Error fetching Last.fm data:', error);
-            lastFmContainer.innerHTML = '<li>Unable to load tracks.</li>';
+            
+            if (!cachedData) {
+                lastFmContainer.innerHTML = '<li>Unable to load tracks.</li>';
+            }
         });
 });
 </script>
-
 
 
 </body>

@@ -2,13 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Disable modern text smoothing for authentic jagged 2000s text */
+
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: unset;
     text-rendering: crispEdges;
 }
 
-/* --- Custom Retro Scrollbar (IE6 / Win98 Style) --- */
+
 ::-webkit-scrollbar {
     width: 16px;
     height: 16px;
@@ -35,13 +35,12 @@ body {
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 11px;
     color: #000000;
-    background-color: #008080; /* Classic Win95 teal fallback */
+    background-color: #008080; 
     line-height: 1.5;
     padding: 15px 10px;
     position: relative;
 }
 
-/* We apply the color-reduction filter ONLY to the background image, keeping text clean */
 body::before {
     content: '';
     position: fixed;
@@ -51,7 +50,7 @@ body::before {
     z-index: -2;
 }
 
-/* Semi-transparent overlay just to make the background less distracting */
+
 body::after {
     content: '';
     position: fixed;
@@ -60,17 +59,17 @@ body::after {
     z-index: -1;
 }
 
-/* --- Main Outer Windows Box --- */
+
 .container {
     max-width: 840px;
     margin: 0 auto;
-    background-color: #d4d0c8; /* Windows classic gray */
+    background-color: #d4d0c8; 
     border: 2px outset #ffffff;
     padding: 3px;
     box-shadow: 4px 4px 12px rgba(0,0,0,0.7);
 }
 
-/* --- Classic Title Bar --- */
+
 .title-bar {
     background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
     color: #ffffff;
@@ -82,7 +81,7 @@ body::after {
     margin-bottom: 6px;
 }
 
-/* --- Retro Header --- */
+
 .header {
     text-align: center;
     background: #000044;
@@ -108,7 +107,7 @@ body::after {
     color: #00ffff;
 }
 
-/* --- Classic Nav Bar --- */
+
 .nav-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -147,10 +146,10 @@ body::after {
     padding: 7px 7px 5px 9px;
 }
 
-/* --- Layout Grid (FIXED OVERLAP ISSUE) --- */
+
 .main-content {
     display: grid;
-    /* Force exact 220px sidebar, allow main content to shrink */
+
     grid-template-columns: minmax(0, 1fr) 220px;
     gap: 10px;
     margin-bottom: 10px;
@@ -160,7 +159,7 @@ body::after {
     background-color: #ffffff;
     border: 2px inset #d4d0c8;
     padding: 14px;
-    /* These properties ensure long unbroken text wraps instead of breaking the grid */
+
     min-width: 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -207,11 +206,11 @@ body::after {
     border: 1px solid #000000;
 }
 
-/* --- The Authentic Image Downgrade --- */
+
 img {
-    /* Applies the 256-color web-safe palette simulation */
+
     filter: url(#web-safe-colors) contrast(1.1);
-    /* Forces browsers to use blocky scaling instead of smooth blurring */
+
     image-rendering: crisp-edges;
     image-rendering: pixelated;
     max-width: 100%;
@@ -226,16 +225,16 @@ img {
 .post-inline-gif {
     border: 1px solid #000;
     margin: 10px 0;
-    filter: none; /* This allows the GIF to animate */
+    filter: none; 
 }
 
-/* Keep GIF files exempt from the filter if you want them to animate smoothly */
+
 .intro-gif img, .mood-gif {
     filter: none;
     border: none;
 }
 
-/* --- Typography & Lists --- */
+
 p, li, td {
     font-size: 11px;
     line-height: 1.5;
@@ -300,7 +299,7 @@ a:hover { color: #ff0000; }
     color: #000080;
 }
 
-/* --- Visitor Counter --- */
+
 .visitor-counter {
     background-color: #000000;
     border: 2px inset #808080;
@@ -335,7 +334,7 @@ a:hover { color: #ff0000; }
     margin-top: 4px;
 }
 
-/* --- Buttons & Guestbook --- */
+
 .guestbook-toggle, .back-button {
     background-color: #d4d0c8;
     border: 2px outset #ffffff;
@@ -401,11 +400,11 @@ a:hover { color: #ff0000; }
     border: 2px inset #ffffff;
 }
 
-/* --- Content Toggling --- */
+
 .content-section { display: none; }
 .content-section.active { display: block; }
 
-/* --- Blog Styles --- */
+
 .blog-view { display: none; }
 .blog-view.active { display: block; }
 .category-list > li > a { font-weight: bold; font-size: 12px; }
@@ -417,7 +416,7 @@ a:hover { color: #ff0000; }
 .post-content h6 { font-size: 11px; margin: 12px 0 4px 0; color: #000080; font-weight: bold; }
 .references-list { list-style-type: decimal; padding-left: 20px; }
 
-/* --- Status Bar --- */
+
 .status-bar {
     background-color: #d4d0c8;
     border: 1px solid #808080;
@@ -439,7 +438,7 @@ a:hover { color: #ff0000; }
     text-overflow: ellipsis;
 }
 
-/* --- Audio Controls --- */
+
 #audio-controls {
     position: fixed;
     top: 10px;
@@ -515,6 +514,6 @@ a:hover { color: #ff0000; }
 .button-container img {
     width: 88px;
     height: 31px;
-    border: none; /* Some old buttons look better without borders */
-    image-rendering: pixelated; /* Keeps the GIF crisp */
+    border: none; 
+    image-rendering: pixelated; 
 }

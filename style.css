@@ -217,9 +217,12 @@ img {
     height: auto;
 }
 
-.post-inline-image, .category-header-image {
+.post-inline-image, .category-header-image, .post-inline-gif {
     border: 1px solid #000;
     margin: 10px 0;
+    max-width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box;
 }
 
 .post-inline-gif {

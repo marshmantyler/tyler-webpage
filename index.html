@@ -669,7 +669,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
 
     const username = 'tylermarshman';
-    const apiKey = '80cccad75283e17e2b9157877bb8db56'; //spare me and my API key alright
+    const apiKey = '80cccad75283e17e2b9157877bb8db56';
     const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`;
 
     const lastFmContainer = document.getElementById('lastfm-tracks');
@@ -685,7 +685,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(data => {
-
             if (data.error) throw new Error(data.message);
 
             if (data.recenttracks && data.recenttracks.track.length > 0) {
@@ -721,7 +720,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 </script>
-
 
 </body>
 </html>

@@ -59,6 +59,17 @@ body::after {
     z-index: -1;
 }
 
+body {
+    cursor: url('normal.cur'), auto !important;
+}
+
+a, button, .nav-button, .back-button, .guestbook-toggle, input[type="submit"], .audio-button {
+    cursor: url('button.cur'), pointer !important;
+}
+
+input[type="text"], input[type="email"], textarea {
+    cursor: url('pen.cur'), text !important;
+}
 
 .container {
     max-width: 840px;

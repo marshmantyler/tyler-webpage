@@ -531,3 +531,84 @@ a:hover { color: #ff0000; }
     border: none; 
     image-rendering: pixelated; 
 }
+
+#HCB_comment_box { 
+    color: #000000 !important; 
+    font-family: Tahoma, Verdana, sans-serif !important; 
+    font-size: 11px !important; 
+}
+
+
+#HCB_comment_box textarea, 
+#HCB_comment_box input[type="text"] {
+    border: 2px inset #7f9db9 !important; 
+    background: #ffffff !important;
+    font-family: Tahoma, Verdana, sans-serif !important;
+    font-size: 11px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 4px !important;
+    outline: none !important;
+    cursor: url('pen.cur'), text !important;
+}
+
+
+#HCB_comment_box ::-webkit-input-placeholder { font-family: Tahoma, Verdana, sans-serif !important; color: #888888 !important; }
+#HCB_comment_box ::-moz-placeholder { font-family: Tahoma, Verdana, sans-serif !important; color: #888888 !important; }
+#HCB_comment_box :-ms-input-placeholder { font-family: Tahoma, Verdana, sans-serif !important; color: #888888 !important; }
+#HCB_comment_box ::placeholder { font-family: Tahoma, Verdana, sans-serif !important; color: #888888 !important; }
+
+
+#HCB_comment_box .submit, 
+#HCB_comment_box input[type="submit"], 
+#HCB_comment_box input[type="button"], 
+#HCB_comment_box button {
+    background: #d4d0c8 !important;
+    background-image: none !important; 
+    border: 2px outset #ffffff !important;
+    font-family: Tahoma, Verdana, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 3px 10px !important;
+    text-shadow: none !important;
+    cursor: url('button.cur'), pointer !important;
+}
+
+
+#HCB_comment_box .submit:active, 
+#HCB_comment_box input[type="submit"]:active, 
+#HCB_comment_box input[type="button"]:active, 
+#HCB_comment_box button:active {
+    border: 2px inset #ffffff !important;
+}
+
+
+#HCB_comment_box .home-desc,
+#HCB_comment_box .hcb-link, 
+#HCB_comment_box .hcb-icon,
+#hcb_msg img, 
+#hcb_msg a { 
+    display: none !important; 
+}
+
+
+.hcb-comment-tb {
+    background: #f5f5f5 !important;
+    border: 1px solid #808080 !important;
+    margin-bottom: 8px !important;
+    padding: 6px !important;
+    border-radius: 0 !important;
+}
+
+
+#HCB_comment_box h3 {
+    font-family: 'Trebuchet MS', Tahoma, sans-serif !important;
+    font-size: 13px !important;
+    color: #000080 !important;
+    border-bottom: 1px solid #c0c0c0 !important;
+    padding-bottom: 2px !important;
+    margin-top: 0 !important;
+}

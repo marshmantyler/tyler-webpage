@@ -47,7 +47,7 @@
 
         <div class="header">
             <h1>WELCOME TO MY HOMEPAGE</h1>
-            <p>Est. 2006 | Last Updated: <span class="blink">NEW!</span> October 21, 2026</p>
+            <p>Est. 2006 | Last Updated: <span class="blink">NEW!</span> October 23, 2026</p>
         </div>
 
         <nav class="nav-grid">
@@ -80,11 +80,11 @@
                     <hr class="retro-hr">
                     <h3>What's New?</h3>
                     <ul class="retro-list">
+						<li>Updated radio station name to media station | 23:10:26</li>
+					    <li>Added anilist integration | 23:10:26</li>
 					    <li>Revamped guestbook | 22:10:26</li>
                         <li>Added custom cursor | 22:10:26</li>
-						<li>Added auto image resizing | 21:10:26</li>
                         <li>Added webrings | 21:10:26</li>
-                        <li>Fixed some bugs | 20:10:26</li>
                     </ul>
                     <hr class="retro-hr">
                     <h3>Resources & Credits</h3>
@@ -423,11 +423,18 @@
                     </ul>
                 </div>
                 <div class="sidebar-section">
-                    <div class="sidebar-title">Radio Station</div>
-					<ul class="retro-list" id="lastfm-tracks">
-						<li id="lastfm-status">Loading tracks...</li>
-					</ul>
+                    <div class="sidebar-title">Media Station</div>
+
+                    <ul class="retro-list" id="anilist-tracks" style="margin-top: 8px;">
+                        <li id="anilist-status">Loading anime...</li>
+                    </ul>
+                    
+                    <ul class="retro-list" id="lastfm-tracks">
+                        <li id="lastfm-status">Loading tracks...</li>
+                    </ul>
+                    
                     <img src="https://media1.tenor.com/m/-iLd5zWMeD4AAAAd/zaku-dance.gif" alt="Current Mood GIF" class="mood-gif">
+                    
                 </div>
 				
                 <div class="sidebar-section">
@@ -467,7 +474,7 @@
         </div>
 
         <div class="status-bar">
-            <span>Last modified: Oct 21, 2026</span>
+            <span>Last modified: Oct 23, 2026</span>
 			<span>Open Source (MIT)</span>
             <span>© 2026 TM</span>
         </div>
@@ -667,7 +674,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
 
     const username = 'tylermarshman';
-    const apiKey = '80cccad75283e17e2b9157877bb8db56';
+    const apiKey = '80cccad75283e17e2b9157877bb8db56'; //spare me and my api key pls
     const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`;
 
     const lastFmContainer = document.getElementById('lastfm-tracks');
@@ -716,6 +723,124 @@ document.addEventListener('DOMContentLoaded', () => {
                 lastFmContainer.innerHTML = '<li>Unable to load tracks.</li>';
             }
         });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const alUsername = 'TMarshman';
+    const alContainer = document.getElementById('anilist-tracks');
+
+    if (!alContainer) return;
+
+    const cachedAl = localStorage.getItem('anilistCache');
+    if (cachedAl) {
+        alContainer.innerHTML = cachedAl;
+    }
+
+    const url = 'https://graphql.anilist.co';
+
+    fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            query: `query ($name: String) { User(name: $name) { id } }`,
+            variables: { name: alUsername }
+        })
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Failed to fetch user');
+        return response.json();
+    })
+    .then(userData => {
+        const userId = userData.data.User.id;
+        
+        const activityQuery = `
+        query ($userId: Int) {
+          Page(page: 1, perPage: 1) {
+            activities(userId: $userId, type: MEDIA_LIST, sort: [ID_DESC]) {
+              ... on ListActivity {
+                status
+                progress
+                media {
+                  title {
+                    romaji
+                    english
+                  }
+                  siteUrl
+                  type
+                }
+              }
+            }
+          }
+        }
+        `;
+        
+        return fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                query: activityQuery,
+                variables: { userId: userId }
+            })
+        });
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Failed to fetch activity');
+        return response.json();
+    })
+    .then(data => {
+        const activities = data.data.Page.activities;
+        
+        if (activities && activities.length > 0) {
+            const entry = activities[0];
+            const title = entry.media.title.english || entry.media.title.romaji;
+            const link = entry.media.siteUrl;
+            
+            let statusText = (entry.status || '').toLowerCase();
+            let retroStatus = "Activity:";
+            let progress = entry.progress ? `<br>${statusText.includes('read') ? 'Chapter' : 'Episode'} ${entry.progress}` : '';
+
+            if (statusText.includes('watch') && statusText.includes('episode')) {
+                retroStatus = '<span class="blink" style="color: #ff00ff;">Now Watching:</span>';
+            } else if (statusText.includes('read') && (statusText.includes('chapter') || statusText.includes('volume'))) {
+                retroStatus = '<span class="blink" style="color: #00ffff;">Now Reading:</span>'; 
+            } else if (statusText.includes('plan')) {
+                retroStatus = `Plan to ${entry.media.type === 'MANGA' ? 'Read' : 'Watch'}:`;
+                progress = ''; 
+            } else if (statusText.includes('completed')) {
+                retroStatus = 'Recently Completed:';
+                progress = '';
+            } else if (statusText.includes('dropped')) {
+                retroStatus = 'Dropped:';
+                progress = '';
+            } else if (statusText.includes('paused')) {
+                retroStatus = 'Paused:';
+                progress = '';
+            } else {
+                retroStatus = `<span style="text-transform: capitalize;">${entry.status}</span>:`;
+            }
+
+            const htmlContent = `
+                <li>
+                    ${retroStatus}<br>
+                    <a href="${link}" target="_blank" style="font-weight: bold;">${title}</a>${progress}
+                </li>
+            `;
+            
+            alContainer.innerHTML = htmlContent;
+            localStorage.setItem('anilistCache', htmlContent);
+            
+        } else {
+            alContainer.innerHTML = '<li>No recent anime/manga activity found.</li>';
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching AniList activity:', error);
+        if (!cachedAl) {
+            alContainer.innerHTML = '<li>Unable to load AniList status.</li>';
+        }
+    });
 });
 </script>
 

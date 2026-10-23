@@ -768,7 +768,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     english
                   }
                   siteUrl
-                  type
                 }
               }
             }
@@ -797,34 +796,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = entry.media.title.english || entry.media.title.romaji;
             const link = entry.media.siteUrl;
             
-            let statusText = (entry.status || '').toLowerCase();
-            let retroStatus = "Activity:";
-            let progress = entry.progress ? `<br>${statusText.includes('read') ? 'Chapter' : 'Episode'} ${entry.progress}` : '';
-
-            if (statusText.includes('watch') && statusText.includes('episode')) {
-                retroStatus = '<span class="blink" style="color: #ff00ff;">Now Watching:</span>';
-            } else if (statusText.includes('read') && (statusText.includes('chapter') || statusText.includes('volume'))) {
-                retroStatus = '<span class="blink" style="color: #00ffff;">Now Reading:</span>'; 
-            } else if (statusText.includes('plan')) {
-                retroStatus = `Plan to ${entry.media.type === 'MANGA' ? 'Read' : 'Watch'}:`;
-                progress = ''; 
-            } else if (statusText.includes('completed')) {
-                retroStatus = 'Recently Completed:';
-                progress = '';
-            } else if (statusText.includes('dropped')) {
-                retroStatus = 'Dropped:';
-                progress = '';
-            } else if (statusText.includes('paused')) {
-                retroStatus = 'Paused:';
-                progress = '';
-            } else {
-                retroStatus = `<span style="text-transform: capitalize;">${entry.status}</span>:`;
-            }
+            const rawStatus = entry.status || 'Activity';
+            const rawProgress = entry.progress ? ` ${entry.progress}` : '';
 
             const htmlContent = `
                 <li>
-                    ${retroStatus}<br>
-                    <a href="${link}" target="_blank" style="font-weight: bold;">${title}</a>${progress}
+                    <span style="text-transform: capitalize;">${rawStatus}${rawProgress}:</span><br>
+                    <a href="${link}" target="_blank" style="font-weight: bold;">${title}</a>
                 </li>
             `;
             

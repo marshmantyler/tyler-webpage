@@ -699,7 +699,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const trackUrl = track.url;
                 
                 const isNowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
-                const statusText = isNowPlaying ? '<span class="blink">Now Playing:</span>' : 'Last Played:';
+                const statusText = isNowPlaying ? '<span class="blink">Currently Listening To:</span>' : 'Last listened to:';
 
                 const htmlContent = `
                     <li>
